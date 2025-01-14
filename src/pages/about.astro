@@ -1,23 +1,31 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
 
+const me = {
+    firstName: "Sam",
+    lastName: "Watts",
+    country: "Scotland",
+    occupation: "Student",
+    age: 19,
+};
+
+const interests = ["coding", "gaming", "music"];
+
+const skills = ["C", "Python", "C++", "Java", "HTML", "CSS"];
+
+// const skillColor = "blue";
 ---
 
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>About Me</title>
-    </head>
-    <body>
-        <div>
-            <a href="/">Home</a>
-            <a href="/about/">About Me</a>
-            <a href="/blog/">blog</a>
-            <a href="/404/">404</a>
-        </div>
-        <h1>Sam Watts</h1>
-        <h2>About Me</h2>
-        <p>Heyyyyy, my name is Sam and i like to code! ╰(*°▽°*)╯</p>
-    </body>
-</html>
+<BaseLayout pageTitle="About Me">
+    <p>Heyyyyy, my name is {me.firstName} and i like to code! ╰(*°▽°*)╯</p>
+    <p>I am a {me.occupation} from {me.country} and i am {me.age} years old.</p>
+    <p>My interests include:</p>
+    <ul>
+        {interests.map((interest) => <li>{interest}</li>)}
+    </ul>
+
+    <p>My skills include:</p>
+    <ul>
+        {skills.map((skill) => <li class="skill">{skill}</li>)}
+    </ul>
+</BaseLayout>

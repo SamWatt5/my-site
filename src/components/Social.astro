@@ -1,0 +1,27 @@
+---
+const { address, text, img } = Astro.props;
+---
+
+<div id="box">
+    <a href={address} target="_blank">
+        <img src={img} ] class="contact-images" />
+        <span>{text}</span>
+    </a>
+</div>
+
+<style>
+    #box {
+        display: flex;
+    }
+    .contact-images {
+        width: 35px;
+        margin: 10px;
+        vertical-align: middle;
+    }
+
+    a {
+        padding: 0.5rem 1rem;
+        color: black;
+        text-decoration: none;
+    }
+</style>

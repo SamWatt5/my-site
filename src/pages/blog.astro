@@ -1,22 +1,10 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>About Me</title>
-    </head>
-    <body>
-        <div>
-            <a href="/">Home</a>
-            <a href="/about/">About Me</a>
-            <a href="/blog/">blog</a>
-            <a href="/404/">404</a>
-        </div>
-        <h1>Blog</h1>
-        <p>I have nothing interesting to say... stop looking at this (ｏ‵-′)ノ”(ノ﹏&lt;。)</p>
-    </body>
-</html>
+<BaseLayout pageTitle="Blog">
+    <p>I have nothing interesting to say... stop looking at this (ｏ‵-′)ノ”(ノ﹏&lt;。)</p>
+    <ul>
+        <li><a href="/posts/post-1/">Post 1</a></li>
+    </ul>
+</BaseLayout>

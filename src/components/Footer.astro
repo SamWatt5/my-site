@@ -1,0 +1,43 @@
+---
+import Social from "./Social.astro";
+const cv = import("../assets/SamWattsCV.pdf");
+const github = "samwatt5";
+---
+
+<div id="footer">
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <!-- <Social address="mailto:sam.watts005@gmail.com" text="sam.watts005@gmail.com" img="../assets/email-mark.png" />
+			<Social address="https://github.com/SamWatt5" text="SamWatt5" img="../assets/github-mark.png" />
+			<Social address="https://www.linkedin.com/in/samwatt5/" text="linkedin.com/in/samwatt5" img="../assets/LI-mark.png" />
+			<Social address="https://discordapp.com/users/366276517866504203" text="Samzdabeast4880" img="../assets/discord-mark.png" /> -->
+            <Social address="mailto:sam.watts005@gmail.com" text="sam.watts005@gmail.com" img="https://samwatt5.github.io/img/email-mark.png" />
+            <Social address="https://github.com/SamWatt5" text="SamWatt5" img="https://samwatt5.github.io/img/github-mark.png" />
+            <Social address="https://www.linkedin.com/in/samwatt5/" text="linkedin.com/in/samwatt5" img="https://samwatt5.github.io/img/LI-mark.png" />
+            <Social address="https://discordapp.com/users/366276517866504203" text="Samzdabeast4880" img="https://samwatt5.github.io/img/discord-mark.png" />
+        </div>
+    </section>
+
+    <section id="CV" class="section">
+        <div class="container">
+            <h2>CV</h2>
+            <p>My CV is available <a href="../assets/SamWattsCV.pdf" target="_blank">here</a></p>
+        </div>
+    </section>
+
+    <div id="copyright" class="section">
+        <div class="container">
+            <p>&copy; 2024 Sam Watts. All rights reserved.</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    #footer {
+        display: flex;
+        /* flex-direction: column; */
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+</style>
