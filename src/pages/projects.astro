@@ -32,7 +32,7 @@ const projects: Project[] = [
     },
     {
         title: "Guitar2MIDI",
-        description: "An innovative application that converts guitar audio input to MIDI data in real-time. Uses advanced audio processing algorithms to detect pitch and timing for accurate MIDI conversion.",
+        description: "An application which converts guitar audio input to MIDI data in real-time. Uses advanced audio processing algorithms to detect pitch and timing for accurate MIDI conversion.",
         technologies: ["Python", "Audio Processing", "MIDI", "Signal Processing", "NumPy"],
         status: "In Progress",
         highlights: [
@@ -46,34 +46,47 @@ const projects: Project[] = [
     },
     {
         title: "ZomBoard",
-        description: "A zombie-themed tactical board game implemented as a web application. Features turn-based strategy gameplay, character progression, and multiplayer support.",
-        technologies: ["JavaScript", "HTML5 Canvas", "CSS", "Node.js", "Socket.io"],
-        status: "Completed",
+        description: "A zombie-themed 2D skateboarding game implemented in GODOT. Features hand drawn tricks, and thats about it right now!",
+        technologies: ["Godot", "Aseprite", "Game Development"],
+        status: "In Progress",
         highlights: [
-            "Turn-based tactical gameplay mechanics",
-            "Real-time multiplayer with WebSocket",
-            "Interactive game board with HTML5 Canvas",
-            "Character progression and skill system",
-            "Responsive design for mobile and desktop"
+            "Kickflip!",
+            "Ollie!",
+            "SKATE!",
         ],
         github: "https://github.com/SamWatt5/zomboard",
         emoji: "🧟🛹"
     },
     {
         title: "Quackathon 25",
-        description: "A hackathon project built in 48 hours - a fun duck-themed web application with interactive features and gamification elements. Showcases rapid prototyping and creative problem-solving skills.",
+        description: "A Minecraft plugin that tracks carbon emissions from in-game actions (like burning logs or smelting ores) and introduces environmental consequences such as acid rain. Players can reduce their footprint by planting trees, encouraging sustainable play.",
         technologies: ["React", "JavaScript", "CSS", "API Integration", "Firebase"],
         status: "Completed",
         highlights: [
-            "Built in 48 hours during hackathon",
-            "Interactive duck-themed user interface",
-            "Gamification with scoring system",
-            "Real-time data with Firebase integration",
-            "Creative problem-solving under time pressure"
+            "Real-time carbon emission tracking",
+            "Tree planting reduces footprint",
+            "Environmental effects like acid rain",
+            "Teaches sustainability through gameplay",
+            "Modular architecture with persistent data containers"
         ],
-        github: "https://github.com/SamWatt5/quackathon25",
+        github: "https://github.com/CallumLaidlaw/carbonfootprint",
         emoji: "🦆"
-    }
+    },
+    {
+    title: "RecoBeats",
+    description: "A web app that connects friends through music by integrating with Spotify. Users can link their accounts, find friends, and create collaborative playlists based on shared tastes.",
+    technologies: ["Flask", "React", "Spotify API", "OAuth2", "PostgreSQL/MySQL"],
+    status: "Completed",
+    highlights: [
+        "Spotify OAuth authentication",
+        "Group playlist generation",
+        "Friend discovery with mutual friends",
+        "Admin controls for user management",
+        "GDPR-compliant security with password hashing"
+    ],
+    github: "https://github.com/SamWatt5/WebProject",
+    emoji: "🎶"
+},
 ];
 ---
 
@@ -83,7 +96,7 @@ const projects: Project[] = [
         <section class="text-center mb-12">
             <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6 transition-colors duration-300">My Projects</h2>
             <p class="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto transition-colors duration-300">
-                Here's a collection of projects I've worked on during my studies and personal learning journey. Each project represents different aspects of my technical skills and problem-solving approach.
+                Here's a collection of projects I've worked on during my studies and personal learning journey. Each project represents different aspects of my technical skills and problem-solving approach. Any projects not featured here will be visible on my GitHub!
             </p>
         </section>
 
