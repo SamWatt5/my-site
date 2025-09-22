@@ -1,31 +1,120 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const me = {
+const profile = {
     firstName: "Sam",
     lastName: "Watts",
-    country: "Scotland",
-    occupation: "Student",
-    age: 19,
+    title: "Computer Science Student",
+    location: "Scotland",
+    age: 20,
+    email: "sam.watts005@gmail.com",
+    university: "University Of Dundee",
 };
 
-const interests = ["coding", "gaming", "music"];
+const technicalSkills = {
+    "Programming Languages": ["Python", "Java", "C++", "C", "JavaScript"],
+    "Web Technologies": ["HTML5", "CSS3", "Astro", "Node.js"],
+    "Tools & Technologies": ["Git", "VS Code", "Linux", "Docker"],
+    Databases: ["MySQL", "PostgreSQL", "MongoDB"],
+    "Currently Learning": ["React", "TypeScript", "Machine Learning"],
+};
 
-const skills = ["C", "Python", "C++", "Java", "HTML", "CSS"];
+const interests = ["Software Development", "Web Technologies", "Artificial Intelligence", "Open Source Contributing", "Gaming", "Music Production"];
 
-// const skillColor = "blue";
+const education = {
+    degree: "Computer Science",
+    institution: "University Of Dundee",
+    year: "2023-2027 (Expected)",
+    relevantCourses: ["Data Structures & Algorithms", "Object-Oriented Programming", "Database Systems", "Web Development", "Software Engineering"],
+};
 ---
 
-<BaseLayout pageTitle="About Me">
-    <p>Heyyyyy, my name is {me.firstName} and i like to code! ╰(*°▽°*)╯</p>
-    <p>I am a {me.occupation} from {me.country} and i am {me.age} years old.</p>
-    <p>My interests include:</p>
-    <ul>
-        {interests.map((interest) => <li>{interest}</li>)}
-    </ul>
+<BaseLayout pageTitle="About Sam Watts">
+    <div class="max-w-4xl mx-auto">
+        <!-- Profile Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6 transition-colors duration-300">About Me</h2>
+            <p class="text-xl text-primary-600 dark:text-primary-400 mb-4 font-medium transition-colors duration-300">
+                Hello! I'm {profile.firstName}
+                {profile.lastName}, a passionate {profile.age}-year-old Computer Science student from {profile.location}. I'm dedicated to creating innovative software solutions and constantly expanding my technical knowledge.
+            </p>
+            <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed transition-colors duration-300">My journey in computer science began with a curiosity about how technology works and has evolved into a deep passion for software development, web technologies, and problem-solving through code. I believe in continuous learning and am always eager to take on new challenges that push my skills further.</p>
+        </section>
 
-    <p>My skills include:</p>
-    <ul>
-        {skills.map((skill) => <li class="skill">{skill}</li>)}
-    </ul>
+        <!-- Education Section -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-6 transition-colors duration-300">🎓 Education</h3>
+            <div class="bg-white dark:bg-dark-800 p-6 rounded-xl border-l-4 border-accent-500 shadow-md hover:shadow-lg transition-all duration-300">
+                <h4 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2 transition-colors duration-300">{education.degree}</h4>
+                <p class="text-lg text-accent-600 dark:text-accent-400 font-medium transition-colors duration-300">{education.institution}</p>
+                <p class="text-gray-600 dark:text-gray-400 mb-4 transition-colors duration-300">{education.year}</p>
+                <div>
+                    <h5 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-3 transition-colors duration-300">Relevant Coursework:</h5>
+                    <ul class="grid md:grid-cols-2 gap-2">
+                        {
+                            education.relevantCourses.map((course) => (
+                                <li class="flex items-center text-gray-700 dark:text-gray-300 transition-colors duration-300">
+                                    <span class="w-2 h-2 bg-accent-500 rounded-full mr-3 flex-shrink-0" />
+                                    {course}
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Skills Section -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-6 transition-colors duration-300">💻 Technical Skills</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {
+                    Object.entries(technicalSkills).map(([category, skills]) => (
+                        <div class="bg-white dark:bg-dark-800 p-6 rounded-xl border-l-4 border-primary-500 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+                            <h4 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-4 transition-colors duration-300">{category}</h4>
+                            <div class="flex flex-wrap gap-2">
+                                {skills.map((skill) => (
+                                    <span class="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 rounded-full text-sm font-medium transition-colors duration-300">{skill}</span>
+                                ))}
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </section>
+
+        <!-- Interests Section -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-6 transition-colors duration-300">🎯 Interests & Passions</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {
+                    interests.map((interest) => (
+                        <div class="bg-white dark:bg-dark-800 p-4 rounded-lg text-center border border-gray-200 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary-600 transition-all duration-300 hover:shadow-md">
+                            <span class="text-gray-700 dark:text-gray-300 font-medium transition-colors duration-300">{interest}</span>
+                        </div>
+                    ))
+                }
+            </div>
+        </section>
+
+        <!-- Career Goals Section -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-6 transition-colors duration-300">🚀 Career Goals</h3>
+            <div class="bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-900/20 dark:to-accent-900/20 p-6 rounded-xl border border-primary-200 dark:border-primary-800 transition-colors duration-300">
+                <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed transition-colors duration-300">I'm seeking opportunities to apply my technical skills in real-world projects, whether through internships, collaborative projects, or entry-level positions. My goal is to contribute to innovative software solutions while continuing to grow as a developer and eventually specialize in areas like web development, artificial intelligence, or software architecture.</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="mb-12">
+            <h3 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-6 transition-colors duration-300">📬 Get In Touch</h3>
+            <div class="bg-white dark:bg-dark-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 transition-colors duration-300">
+                <p class="text-lg text-gray-600 dark:text-gray-400 mb-6 transition-colors duration-300">I'm always interested in connecting with fellow developers, potential mentors, or anyone with exciting project opportunities. Feel free to reach out!</p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="mailto:{profile.email}" class="px-6 py-3 bg-primary-500 text-white rounded-lg font-medium hover:bg-primary-600 transition-all duration-300 hover:scale-105 hover:shadow-lg text-center"> 📧 Email Me </a>
+                    <a href="/SamWattsCV.pdf" target="_blank" class="px-6 py-3 border-2 border-accent-500 text-accent-600 dark:text-accent-400 rounded-lg font-medium hover:bg-accent-500 hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg text-center"> 📄 Download CV </a>
+                </div>
+            </div>
+        </section>
+    </div>
 </BaseLayout>

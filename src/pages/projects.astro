@@ -1,0 +1,294 @@
+---
+export const prerender = true;
+import { nullable } from 'astro:schema';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface Project {
+  title: string;
+  description: string;
+  technologies: string[];
+  status: "Completed" | "In Progress" | "Upcoming";
+  highlights: string[];
+  github?: string;
+  live?: string;
+  emoji: string;
+}
+
+const projects: Project[] = [
+    {
+        title: "Portfolio Website",
+        description: "A modern, responsive personal portfolio website built with Astro and Tailwind CSS. Features dark mode, smooth animations, and optimized performance to showcase my projects and skills.",
+        technologies: ["Astro", "TypeScript", "Tailwind CSS", "JavaScript"],
+        status: "Completed",
+        highlights: [
+            "Built with Astro for optimal performance and SEO",
+            "Responsive design with Tailwind CSS utilities",
+            "Dark/light mode toggle functionality", 
+            "Smooth animations and interactive elements",
+            "Optimized images and fast loading times"
+        ],
+        github: "https://github.com/SamWatt5/my-site",
+        emoji: "🌐"
+    },
+    {
+        title: "Guitar2MIDI",
+        description: "An innovative application that converts guitar audio input to MIDI data in real-time. Uses advanced audio processing algorithms to detect pitch and timing for accurate MIDI conversion.",
+        technologies: ["Python", "Audio Processing", "MIDI", "Signal Processing", "NumPy"],
+        status: "In Progress",
+        highlights: [
+            "Real-time audio to MIDI conversion",
+            "Advanced pitch detection algorithms",
+            "Support for multiple guitar tunings",
+            "Low-latency audio processing",
+            "MIDI export and DAW integration"
+        ],
+        emoji: "🎸"
+    },
+    {
+        title: "ZomBoard",
+        description: "A zombie-themed tactical board game implemented as a web application. Features turn-based strategy gameplay, character progression, and multiplayer support.",
+        technologies: ["JavaScript", "HTML5 Canvas", "CSS", "Node.js", "Socket.io"],
+        status: "Completed",
+        highlights: [
+            "Turn-based tactical gameplay mechanics",
+            "Real-time multiplayer with WebSocket",
+            "Interactive game board with HTML5 Canvas",
+            "Character progression and skill system",
+            "Responsive design for mobile and desktop"
+        ],
+        github: "https://github.com/SamWatt5/zomboard",
+        emoji: "🧟🛹"
+    },
+    {
+        title: "Quackathon 25",
+        description: "A hackathon project built in 48 hours - a fun duck-themed web application with interactive features and gamification elements. Showcases rapid prototyping and creative problem-solving skills.",
+        technologies: ["React", "JavaScript", "CSS", "API Integration", "Firebase"],
+        status: "Completed",
+        highlights: [
+            "Built in 48 hours during hackathon",
+            "Interactive duck-themed user interface",
+            "Gamification with scoring system",
+            "Real-time data with Firebase integration",
+            "Creative problem-solving under time pressure"
+        ],
+        github: "https://github.com/SamWatt5/quackathon25",
+        emoji: "🦆"
+    }
+];
+---
+
+<BaseLayout pageTitle="Projects - Sam Watts">
+    <div class="max-w-6xl mx-auto">
+        <!-- Projects Header -->
+        <section class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6 transition-colors duration-300">My Projects</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto transition-colors duration-300">
+                Here's a collection of projects I've worked on during my studies and personal learning journey. Each project represents different aspects of my technical skills and problem-solving approach.
+            </p>
+        </section>
+
+        <!-- Projects Grid -->
+        <section class="grid lg:grid-cols-2 gap-8 mb-16">
+            {projects.map((project, index) => {
+                const gradients = [
+                    "from-blue-500 to-purple-600",
+                    "from-pink-500 to-red-500", 
+                    "from-orange-500 to-yellow-500",
+                    "from-green-500 to-teal-500"
+                ];
+                const gradient = gradients[index % gradients.length];
+                
+                return (
+                    <div class="group bg-white dark:bg-dark-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 cursor-pointer border border-gray-200 dark:border-gray-700">
+                        <!-- Project Header with Gradient -->
+                        <div class={`h-2 bg-gradient-to-r ${gradient}`}></div>
+                        
+                        <!-- Project Content -->
+                        <div class="p-8">
+                            <!-- Emoji and Status -->
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="text-4xl group-hover:scale-110 transition-transform duration-300">
+                                    {project.emoji}
+                                </div>
+                                <span class={`px-3 py-1 rounded-full text-sm font-medium ${
+                                    project.status === "Completed" 
+                                        ? "bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200" 
+                                        : project.status === "In Progress"
+                                        ? "bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200"
+                                        : "bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-200"
+                                }`}>
+                                    {project.status === "Completed" ? "✅ " : "🚧 "}
+                                    {project.status}
+                                </span>
+                            </div>
+
+                            <!-- Project Title -->
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 group-hover:text-primary-500 transition-colors duration-300">
+                                {project.title}
+                            </h3>
+
+                            <!-- Project Description -->
+                            <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed transition-colors duration-300">
+                                {project.description}
+                            </p>
+
+                            <!-- Technologies -->
+                            <div class="mb-6">
+                                <div class="flex flex-wrap gap-2">
+                                    {project.technologies.map((tech) => (
+                                        <span class="tech-tag px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium hover:scale-105 transition-all duration-200 cursor-pointer">
+                                            {tech}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <!-- Key Features -->
+                            <div class="mb-6">
+                                <h4 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-3 transition-colors duration-300">
+                                    ✨ Key Features:
+                                </h4>
+                                <ul class="space-y-2">
+                                    {project.highlights.map((highlight) => highlight && (
+                                        <li class="flex items-start text-gray-600 dark:text-gray-400 transition-colors duration-300">
+                                            <span class="w-2 h-2 bg-primary-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                                            {highlight}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            <!-- Project Links -->
+                            <div class="flex flex-col sm:flex-row gap-3">
+                                {project.github && (
+                                    <a href={project.github} 
+                                       target="_blank" 
+                                       rel="noopener"
+                                       class="flex-1 px-4 py-2 bg-gray-900 dark:bg-gray-700 text-white rounded-lg font-medium hover:bg-gray-800 dark:hover:bg-gray-600 transition-all duration-300 hover:scale-105 text-center">
+                                        🔍 View Code
+                                    </a>
+                                )}
+                                {project.live && (
+                                    <a href={project.live} 
+                                       target="_blank" 
+                                       rel="noopener"
+                                       class="flex-1 px-4 py-2 bg-accent-500 text-white rounded-lg font-medium hover:bg-accent-600 transition-all duration-300 hover:scale-105 text-center">
+                                        🚀 Live Demo
+                                    </a>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                );
+            })}
+        </section>
+
+        <!-- Future Projects Section -->
+        <section class="bg-gradient-to-r from-primary-50 to-purple-50 dark:from-primary-900/20 dark:to-purple-900/20 rounded-2xl p-8 mb-12 border border-primary-200 dark:border-primary-800 transition-colors duration-300">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 transition-colors duration-300">🚀 Upcoming Projects</h3>
+            <p class="text-lg text-gray-600 dark:text-gray-400 mb-6 transition-colors duration-300">
+                I'm continuously working on new projects and expanding my skill set. Some areas I'm planning to explore include:
+            </p>
+            <ul class="grid md:grid-cols-2 gap-3">
+                <li class="flex items-center text-gray-700 dark:text-gray-300 font-medium transition-colors duration-300">
+                    <span class="w-2 h-2 bg-accent-500 rounded-full mr-4"></span>
+                    🤖 Machine Learning applications with Python
+                </li>
+                <li class="flex items-center text-gray-700 dark:text-gray-300 font-medium transition-colors duration-300">
+                    <span class="w-2 h-2 bg-accent-500 rounded-full mr-4"></span>
+                    📱 Mobile app development with React Native
+                </li>
+                <li class="flex items-center text-gray-700 dark:text-gray-300 font-medium transition-colors duration-300">
+                    <span class="w-2 h-2 bg-accent-500 rounded-full mr-4"></span>
+                    ⛓️ Blockchain and cryptocurrency projects
+                </li>
+                <li class="flex items-center text-gray-700 dark:text-gray-300 font-medium transition-colors duration-300">
+                    <span class="w-2 h-2 bg-accent-500 rounded-full mr-4"></span>
+                    🌟 Open source contributions
+                </li>
+                <li class="flex items-center text-gray-700 dark:text-gray-300 font-medium transition-colors duration-300">
+                    <span class="w-2 h-2 bg-accent-500 rounded-full mr-4"></span>
+                    🎮 Game development with Unity
+                </li>
+            </ul>
+        </section>
+
+        <!-- Collaboration Section -->
+        <section class="bg-white dark:bg-dark-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700 text-center transition-colors duration-300">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 transition-colors duration-300">🤝 Let's Collaborate</h3>
+            <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto transition-colors duration-300">
+                I'm always interested in collaborating on interesting projects or contributing to open source initiatives. If you have an idea or project you'd like to work on together, feel free to reach out!
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/about/" class="px-8 py-3 bg-primary-500 text-white rounded-lg font-medium hover:bg-primary-600 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                    💬 Get In Touch
+                </a>
+                <a href="https://github.com/SamWatt5" target="_blank" rel="noopener" class="px-8 py-3 border-2 border-gray-800 dark:border-gray-300 text-gray-800 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-800 hover:text-white dark:hover:bg-gray-300 dark:hover:text-gray-900 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                    👀 View GitHub
+                </a>
+            </div>
+        </section>
+    </div>
+</BaseLayout>
+
+<style>
+    /* Custom animations for interactive elements */
+    @keyframes floatUp {
+        0% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(-100px) scale(1.5);
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Fun click effects for tech tags
+        const techTags = document.querySelectorAll(".tech-tag");
+        techTags.forEach((tag) => {
+            tag.addEventListener("click", (e) => {
+                e.preventDefault();
+
+                // Create floating emoji effect
+                const emoji = ["💻", "🚀", "⚡", "🎯", "✨"][Math.floor(Math.random() * 5)];
+                const floatEmoji = document.createElement("span");
+                floatEmoji.textContent = emoji;
+                floatEmoji.style.cssText = `
+                    position: absolute;
+                    font-size: 1.5rem;
+                    pointer-events: none;
+                    z-index: 1000;
+                    animation: floatUp 2s ease-out forwards;
+                `;
+
+                const rect = tag.getBoundingClientRect();
+                floatEmoji.style.left = rect.left + rect.width / 2 + "px";
+                floatEmoji.style.top = rect.top + "px";
+
+                document.body.appendChild(floatEmoji);
+
+                setTimeout(() => {
+                    floatEmoji.remove();
+                }, 2000);
+            });
+        });
+    });
+</script>
+
+<style>
+    /* Custom animations for interactive elements */
+    @keyframes floatUp {
+        0% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(-100px) scale(1.5);
+        }
+    }
+</style>

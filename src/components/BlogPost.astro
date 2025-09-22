@@ -1,7 +1,72 @@
 ---
 const { post } = Astro.props;
+
+// Format the date
+const publishDate = new Date(post.frontmatter.date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+});
+
+// Get reading time estimate (rough calculation)
+const wordsPerMinute = 200;
+let readingTime = 3; // Default fallback
+try {
+    const content = post.compiledContent ? await post.compiledContent() : "";
+    if (typeof content === "string" && content.length > 0) {
+        const wordCount = content.split(/\s+/).filter((word) => word.length > 0).length;
+        readingTime = Math.max(1, Math.ceil(wordCount / wordsPerMinute));
+    }
+} catch (error) {
+    // Fallback to estimated reading time based on description or default
+    if (post.frontmatter.description) {
+        const descWordCount = post.frontmatter.description.split(/\s+/).length;
+        readingTime = Math.max(1, Math.ceil((descWordCount * 3) / wordsPerMinute)); // Estimate full article is 3x description
+    }
+}
 ---
 
-<li>
-    <a href={post.url}>{post.frontmatter.title}</a>
-</li>
+<article class="group bg-white dark:bg-dark-800 rounded-2xl border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] overflow-hidden">
+    <a href={post.url} class="block p-8 no-underline">
+        <!-- Post Header -->
+        <div class="flex items-start justify-between mb-4">
+            <div class="flex-1">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 group-hover:text-primary-500 transition-colors duration-300 mb-2">
+                    {post.frontmatter.title}
+                </h2>
+                <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+                    <span class="flex items-center gap-1">
+                        📅 {publishDate}
+                    </span>
+                    <span class="flex items-center gap-1">
+                        ⏱️ {readingTime} min read
+                    </span>
+                    {post.frontmatter.tags && <span class="flex items-center gap-1">🏷️ {post.frontmatter.tags.length} tags</span>}
+                </div>
+            </div>
+            <div class="text-3xl group-hover:scale-110 transition-transform duration-300">📖</div>
+        </div>
+
+        <!-- Post Description -->
+        {post.frontmatter.description && <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-6 transition-colors duration-300">{post.frontmatter.description}</p>}
+
+        <!-- Tags -->
+        {
+            post.frontmatter.tags && (
+                <div class="flex flex-wrap gap-2 mb-6">
+                    {post.frontmatter.tags.map((tag: string) => (
+                        <span class="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 rounded-full text-sm font-medium">{tag}</span>
+                    ))}
+                </div>
+            )
+        }
+
+        <!-- Read More Button -->
+        <div class="flex items-center text-primary-500 font-medium group-hover:text-primary-600 transition-colors duration-300">
+            <span>Read full article</span>
+            <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </div>
+    </a>
+</article>

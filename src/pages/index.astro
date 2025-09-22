@@ -2,6 +2,133 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout pageTitle="Home">
-    <p>Heyyyyy, welcome to my site! (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧</p>
+<BaseLayout pageTitle="Sam Watts - Computer Science Student">
+    <!-- Hero Section -->
+    <div class="relative text-center py-16 bg-gradient-to-br from-white to-gray-100 dark:from-dark-800 dark:to-dark-900 -mx-4 mb-12 rounded-b-3xl shadow-lg transition-colors duration-300">
+        <!-- Floating Code Snippets -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden">
+            <div class="absolute top-[10%] left-[10%] bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 px-3 py-2 rounded-lg font-mono text-sm animate-float backdrop-blur-sm border border-primary-200 dark:border-primary-700">console.log('Hello World!');</div>
+            <div class="absolute top-[20%] right-[15%] bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 px-3 py-2 rounded-lg font-mono text-sm animate-float [animation-delay:2s] backdrop-blur-sm border border-primary-200 dark:border-primary-700">def hello(): return "Hi!"</div>
+            <div class="absolute bottom-[20%] left-[20%] bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 px-3 py-2 rounded-lg font-mono text-sm animate-float [animation-delay:4s] backdrop-blur-sm border border-primary-200 dark:border-primary-700">&lt;h1&gt;Welcome&lt;/h1&gt;</div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="relative max-w-4xl mx-auto px-4">
+            <h2 class="text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4 animate-fade-in transition-colors duration-300">
+                Hello, I'm <span class="bg-gradient-to-r from-primary-500 via-purple-500 to-accent-500 bg-clip-text text-transparent">Sam Watts</span> 👋
+            </h2>
+            <p class="text-xl text-primary-600 dark:text-primary-400 font-medium mb-4 animate-fade-in transition-colors duration-300">Computer Science Student & Aspiring Software Developer 🚀</p>
+            <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto animate-fade-in transition-colors duration-300">Welcome to my digital portfolio. I'm a passionate 20-year-old CS student from Scotland, dedicated to create innovative software solutions and continuously learning new technologies.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
+                <a href="/about/" class="px-6 py-3 bg-primary-500 text-white rounded-lg font-medium hover:bg-primary-600 transition-all duration-300 hover:scale-105 hover:shadow-lg"> About Me 😊 </a>
+                <a href="/projects/" class="px-6 py-3 border-2 border-primary-500 text-primary-600 dark:text-primary-400 rounded-lg font-medium hover:bg-primary-500 hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg"> View Projects 💻 </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skills Preview -->
+    <section class="mb-12 opacity-0 translate-y-8 transition-all duration-700 animate-fade-in-scroll">
+        <h3 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-8 text-center transition-colors duration-300">🔧 Technical Skills</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white dark:bg-dark-800 p-6 rounded-xl border-l-4 border-primary-500 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+                <h4 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-4 transition-colors duration-300">💻 Programming Languages</h4>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag px-3 py-1 bg-gradient-to-r from-blue-100 to-blue-200 dark:from-blue-900/50 dark:to-blue-800/50 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium cursor-pointer hover:scale-110 transition-all duration-200" data-level="90">🐍 Python</span>
+                    <span class="skill-tag px-3 py-1 bg-gradient-to-r from-orange-100 to-orange-200 dark:from-orange-900/50 dark:to-orange-800/50 text-orange-800 dark:text-orange-200 rounded-full text-sm font-medium cursor-pointer hover:scale-110 transition-all duration-200" data-level="85">☕ Java</span>
+                    <span class="skill-tag px-3 py-1 bg-gradient-to-r from-purple-100 to-purple-200 dark:from-purple-900/50 dark:to-purple-800/50 text-purple-800 dark:text-purple-200 rounded-full text-sm font-medium cursor-pointer hover:scale-110 transition-all duration-200" data-level="75">⚡ C++</span>
+                    <span class="skill-tag px-3 py-1 bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-700/50 dark:to-gray-600/50 text-gray-800 dark:text-gray-200 rounded-full text-sm font-medium cursor-pointer hover:scale-110 transition-all duration-200" data-level="70">🔧 C</span>
+                </div>
+            </div>
+            <div class="bg-white dark:bg-dark-800 p-6 rounded-xl border-l-4 border-accent-500 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+                <h4 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-4 transition-colors duration-300">🌐 Web Technologies</h4>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag px-3 py-1 bg-gradient-to-r from-red-100 to-red-200 dark:from-red-900/50 dark:to-red-800/50 text-red-800 dark:text-red-200 rounded-full text-sm font-medium cursor-pointer hover:scale-110 transition-all duration-200" data-level="95">📝 HTML</span>
+                    <span class="skill-tag px-3 py-1 bg-gradient-to-r from-blue-100 to-blue-200 dark:from-blue-900/50 dark:to-blue-800/50 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium cursor-pointer hover:scale-110 transition-all duration-200" data-level="90">🎨 CSS</span>
+                    <span class="skill-tag px-3 py-1 bg-gradient-to-r from-yellow-100 to-yellow-200 dark:from-yellow-900/50 dark:to-yellow-800/50 text-yellow-800 dark:text-yellow-200 rounded-full text-sm font-medium cursor-pointer hover:scale-110 transition-all duration-200" data-level="85">⚡ JavaScript</span>
+                    <span class="skill-tag px-3 py-1 bg-gradient-to-r from-purple-100 to-purple-200 dark:from-purple-900/50 dark:to-purple-800/50 text-purple-800 dark:text-purple-200 rounded-full text-sm font-medium cursor-pointer hover:scale-110 transition-all duration-200" data-level="80">🚀 Astro</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="mb-12 opacity-0 translate-y-8 transition-all duration-700 animate-fade-in-scroll [animation-delay:0.3s]">
+        <h3 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-8 text-center transition-colors duration-300">🎯 Explore My Work</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+            <a href="/blog/" class="group bg-white dark:bg-dark-800 border border-gray-200 dark:border-gray-700 rounded-xl p-8 no-underline transition-all duration-300 hover:shadow-lg hover:scale-105 hover:border-primary-300 dark:hover:border-primary-600">
+                <div class="text-center">
+                    <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">📝</div>
+                    <h4 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2 transition-colors duration-300">Technical Blog</h4>
+                    <p class="text-gray-600 dark:text-gray-400 transition-colors duration-300">Insights and learnings from my coding journey</p>
+                </div>
+            </a>
+            <a href="/SamWattsCV.pdf" target="_blank" class="group bg-white dark:bg-dark-800 border border-gray-200 dark:border-gray-700 rounded-xl p-8 no-underline transition-all duration-300 hover:shadow-lg hover:scale-105 hover:border-accent-300 dark:hover:border-accent-600">
+                <div class="text-center">
+                    <div class="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">📄</div>
+                    <h4 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2 transition-colors duration-300">Resume/CV</h4>
+                    <p class="text-gray-600 dark:text-gray-400 transition-colors duration-300">Download my complete academic and professional profile</p>
+                </div>
+            </a>
+        </div>
+    </section>
 </BaseLayout>
+
+<script>
+    // Add interactive JavaScript for animations and effects
+    document.addEventListener("DOMContentLoaded", () => {
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px",
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.remove("opacity-0", "translate-y-8");
+                    entry.target.classList.add("opacity-100", "translate-y-0");
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with scroll animation classes
+        document.querySelectorAll(".animate-fade-in-scroll").forEach((el) => {
+            observer.observe(el);
+        });
+
+        // Add click effects to skill tags
+        document.querySelectorAll(".skill-tag").forEach((tag) => {
+            tag.addEventListener("click", () => {
+                // Create ripple effect
+                tag.classList.add("scale-125", "shadow-lg");
+                setTimeout(() => {
+                    tag.classList.remove("scale-125", "shadow-lg");
+                }, 200);
+
+                // Create floating emoji
+                const emojis = ["✨", "🚀", "💫", "⚡", "🎯"];
+                const emoji = emojis[Math.floor(Math.random() * emojis.length)];
+                const floatingEmoji = document.createElement("div");
+                floatingEmoji.textContent = emoji;
+                floatingEmoji.className = "absolute text-2xl pointer-events-none animate-bounce";
+                floatingEmoji.style.left = "50%";
+                floatingEmoji.style.top = "-20px";
+                floatingEmoji.style.transform = "translateX(-50%)";
+
+                (tag as HTMLElement).style.position = "relative";
+                tag.appendChild(floatingEmoji);
+
+                setTimeout(() => {
+                    floatingEmoji.remove();
+                }, 1000);
+            });
+        });
+
+        // Trigger initial animations
+        setTimeout(() => {
+            document.querySelectorAll("[class*='animate-']").forEach((el) => {
+                el.classList.add("animate");
+            });
+        }, 100);
+    });
+</script>

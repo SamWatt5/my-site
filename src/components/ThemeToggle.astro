@@ -1,0 +1,66 @@
+---
+
+---
+
+<div class="fixed bottom-8 right-8 z-50">
+    <button id="theme-toggle" class="p-0 border-0 bg-transparent cursor-pointer rounded-full shadow-lg hover:scale-110 transition-all duration-300 hover:shadow-xl" title="Toggle Dark/Light Mode">
+        <div class="w-16 h-8 bg-gradient-to-r from-primary-500 to-purple-600 dark:from-dark-700 dark:to-dark-600 rounded-full relative transition-all duration-300">
+            <div id="toggle-thumb" class="w-7 h-7 bg-white rounded-full absolute top-0.5 left-0.5 flex items-center justify-center text-sm shadow-md transition-all duration-300 ease-out">
+                <span id="sun-icon" class="transition-all duration-200 opacity-100 scale-100 dark:opacity-0 dark:scale-0">☀️</span>
+                <span id="moon-icon" class="absolute transition-all duration-200 opacity-0 scale-0 dark:opacity-100 dark:scale-100">🌙</span>
+            </div>
+        </div>
+    </button>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const themeToggle = document.getElementById("theme-toggle");
+        const html = document.documentElement;
+
+        // Check for saved theme preference or default to light mode
+        const savedTheme = localStorage.getItem("theme") || "light";
+
+        // Apply theme
+        if (savedTheme === "dark") {
+            html.classList.add("dark");
+        } else {
+            html.classList.remove("dark");
+        }
+
+        updateToggleState(savedTheme === "dark");
+
+        if (themeToggle) {
+            themeToggle.addEventListener("click", () => {
+                const isDark = html.classList.contains("dark");
+                const newTheme = isDark ? "light" : "dark";
+
+                if (newTheme === "dark") {
+                    html.classList.add("dark");
+                } else {
+                    html.classList.remove("dark");
+                }
+
+                localStorage.setItem("theme", newTheme);
+                updateToggleState(newTheme === "dark");
+
+                // Add fun animation
+                themeToggle.style.transform = "scale(1.2) rotate(10deg)";
+                setTimeout(() => {
+                    themeToggle.style.transform = "";
+                }, 300);
+            });
+        }
+
+        function updateToggleState(isDark: boolean) {
+            const thumb = document.getElementById("toggle-thumb");
+            if (!thumb) return;
+
+            if (isDark) {
+                thumb.style.transform = "translateX(28px)";
+            } else {
+                thumb.style.transform = "translateX(0px)";
+            }
+        }
+    });
+</script>
