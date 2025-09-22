@@ -3,7 +3,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
 
-const { pageTitle } = Astro.props;
+const { pageTitle, hidePageTitle = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -15,12 +15,17 @@ const { pageTitle } = Astro.props;
         <title>{pageTitle}</title>
         <meta name="description" content="Sam Watts - Computer Science Student Portfolio. Showcasing projects, skills, and technical blog posts." />
         <meta name="keywords" content="Sam Watts, Computer Science, Portfolio, Web Development, Programming, Scotland" />
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="alternate icon" href="/favicon.ico" />
+        <meta name="theme-color" content="#3b82f6" />
     </head>
     <body class="bg-white dark:bg-dark-900 text-gray-800 dark:text-gray-200 min-h-screen transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-4">
             <Header />
             <main class="min-h-[80vh]">
-                <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100 text-center my-8 transition-colors duration-300">{pageTitle}</h1>
+                {!hidePageTitle && <h1 class="text-4xl font-bold text-gray-900 dark:text-gray-100 text-center my-8 transition-colors duration-300">{pageTitle}</h1>}
                 <slot />
             </main>
             <Footer />
